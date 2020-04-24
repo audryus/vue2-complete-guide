@@ -1,0 +1,43 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app1">
+  <Contador1></Contador1>
+</div>
+<hr>
+<div id="app2">
+  <CONTADOR2></CONTADOR2>
+</div>
+
+<script>
+  const dados = {contador: 0}
+
+  // registro local
+  const contador = {
+    template: `
+      <div>
+        <span>{{contador}}</span>
+        <button @click="contador++">+</button>
+        <button @click="contador--">-</button>
+      </div>
+    `,
+    data() {
+      return {
+        contador: 0,
+      }
+    }
+  }
+
+  new Vue({
+    el: '#app1',
+    components: {
+      contador1: contador
+    }
+  });
+  new Vue({
+    el: '#app2',
+    components: {
+      contador2: contador
+    }
+  });
+
+</script>
