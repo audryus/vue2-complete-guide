@@ -1,7 +1,11 @@
 <template>
 	<div id="app">
-		<Citacoes />
-		<Sobre />
+		<span>
+			<button @click="changeComponente">Alterar Componente</button>
+		</span>
+		<keep-alive>
+			<component :is="componente"/>
+		</keep-alive>
 	</div>
 </template>
 
@@ -10,7 +14,21 @@ import Citacoes from './components/Citacoes'
 import Sobre from './components/Sobre'
 
 export default {
-	components: { Citacoes, Sobre }
+	components: { Citacoes, Sobre },
+	data() {
+		return {
+			componente: 'Citacoes'
+		}
+	},
+	methods: {
+		changeComponente() {
+			if (this.componente === 'Citacoes') {
+				this.componente = 'Sobre'
+			} else {
+				this.componente = 'Citacoes'
+			}
+		}
+	}
 }
 </script>
 

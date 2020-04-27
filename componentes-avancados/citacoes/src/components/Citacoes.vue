@@ -4,12 +4,24 @@
             <button @click="numero--">&lt;</button>
             <button @click="numero++">&gt;</button>
         </span>
-        {{ numero }} {{ indice }}
+        <Citacao>
+            <h1 slot="autor">{{ citacoes[indice].autor }}</h1>
+            <h1 slot="autor">{{ citacoes[indice].autor }}</h1>
+            <p>Citacao</p>
+            <p>{{ citacoes[indice].texto }}</p>
+            <h6 slot="fonte">{{citacoes[indice].fonte}}</h6>
+            <h6 slot="fonte">{{citacoes[indice].fonte}}</h6>
+        </Citacao>
     </div>
 </template>
 
 <script>
+import Citacao from './Citacao'
+
 export default {
+    components: {
+        Citacao
+    },
     data() {
         return {
             numero: 0,
@@ -32,7 +44,19 @@ export default {
         indice() {
             return Math.abs(this.numero % 3)
         }
-    }
+    },
+    created() {
+        // console.log('[Citacoes] created');
+    },
+    destroyed() {
+        // console.log('[Citacoes] destroyed');
+    },
+    activated() {
+        // console.log('[Citacoes] activated');
+    },
+    deactivated() {
+        // console.log('[Citacoes] deactivated');
+    },
 }
 </script>
 
@@ -41,5 +65,8 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+    h1 {
+        color: white;
     }
 </style>
