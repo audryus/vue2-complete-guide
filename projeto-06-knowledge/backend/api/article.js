@@ -47,7 +47,7 @@ module.exports = app => {
         }
     }
 
-    const limit = 10
+    const limit = 2
 
     const get = async (req,res) => {
         const page = req.query.page || 1
